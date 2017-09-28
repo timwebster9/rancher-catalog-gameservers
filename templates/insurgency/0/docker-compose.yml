@@ -2,8 +2,11 @@ version: '2'
 
 services:
   insurgency:
-    image: mars:5000/timw/insurgency-server
+    image: localhost:5000/timw/insurgency-server
     ports:
       - 27000-27015:27000-27015/udp
       - 27016-27030:27016-27030/udp
       - 27014-27050:27014-27050/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: hostname=mars
+      io.rancher.container.pull_image: always
